@@ -13,6 +13,8 @@ abstract class Routes {
   static const NAGAD = _Paths.NAGAD;
   static const DETAILS = _Paths.DETAILS;
   static const CONFIRM = _Paths.CONFIRM;
+  static const LOGIN = _Paths.LOGIN;
+
 
 
 
@@ -36,6 +38,8 @@ abstract class _Paths {
   static const NAGAD = '/nagad';
   static const DETAILS = '/payment-details';
   static const CONFIRM = '/confirm-payment';
+  static const LOGIN = '/login';
+
 
 
 

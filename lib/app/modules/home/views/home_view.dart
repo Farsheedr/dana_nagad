@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.all(AppSize.s12),
+            padding: EdgeInsets.all(AppSize.s10),
             child: Align(
               alignment: Alignment.topCenter,
               child: Container(
@@ -39,7 +39,7 @@ class HomeView extends GetView<HomeController> {
                       child: Column(
                         children: [
                           Text(
-                            '    Secure Your Future \nWith LBF Micro Savings',
+                            'Secure Your Future With LBF Micro Savings',
                             style: TextStyle(
                               color: AppColor.colorFerrariRed,
                               fontSize: AppSize.textMedium,
@@ -57,7 +57,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                               Text(
                                 'Simple Setup',
-                                style: TextStyle(fontSize: AppSize.textSmall),
+                                style: TextStyle(fontSize: AppSize.textMedium),
                               ),
                             ],
                           ),
@@ -72,7 +72,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                               Text(
                                 'Secure Transactions',
-                                style: TextStyle(fontSize: AppSize.textSmall),
+                                style: TextStyle(fontSize: AppSize.textMedium),
                               ),
                             ],
                           ),
@@ -86,8 +86,8 @@ class HomeView extends GetView<HomeController> {
                                 width: AppSize.s10,
                               ),
                               Text(
-                                'Personalized Experience',
-                                style: TextStyle(fontSize: AppSize.textSmall),
+                                'Personalized \n Experience',
+                                style: TextStyle(fontSize: AppSize.textMedium),
                               ),
                             ],
                           ),
@@ -102,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                               Text(
                                 '24/7 Support',
-                                style: TextStyle(fontSize: AppSize.textSmall),
+                                style: TextStyle(fontSize: AppSize.textMedium),
                               ),
                             ],
                           ),

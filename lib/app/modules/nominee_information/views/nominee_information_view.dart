@@ -11,6 +11,7 @@ class NomineeView extends GetView<NomineeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text('Nominee Information'),
           backgroundColor: AppColor.primaryAppColor,),
           body: Padding(

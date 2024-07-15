@@ -336,7 +336,7 @@ class MainView extends GetView<HomeController> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('FAQ',
+                    Text(' FAQ',
                         style: TextStyle(
                           color: AppColor.colorBlack,
                           fontSize: AppSize.textSmall,

@@ -10,7 +10,7 @@ class AppColor {
 
   static Color get colorTextFieldBg => const Color(0xFFfef7f7);
 
-  static Color get primaryAppColor => const Color(0xFF048D77);
+  static Color get primaryAppColor => const Color(0xFF056052);
 
   static Color get accentColor => const Color(0xFFFF00FF);
 

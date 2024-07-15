@@ -42,7 +42,9 @@ class ConfirmationPaymentView extends GetView<PaymentController> {
             style: TextStyle(fontSize: AppSize.textSmall,
             fontWeight: FontWeight.bold),),
             Spacer(),
-            ElevatedButton(onPressed: (){}, child: Text('Back To Home'),
+            ElevatedButton(onPressed: (){
+              Get.toNamed(AppPages.INITIAL);
+            }, child: Text('Back To Home'),
               style: ElevatedButton.styleFrom(backgroundColor: AppColor.primaryAppColor),
 
             ),

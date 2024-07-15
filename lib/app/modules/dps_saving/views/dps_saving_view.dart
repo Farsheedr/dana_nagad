@@ -1,6 +1,7 @@
 import 'package:dana_nagad/app/modules/dps_saving/controllers/dps_saving_controller.dart';
 import 'package:dana_nagad/app/routes/app_pages.dart';
 import 'package:dana_nagad/app/styles/app_styles.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,42 +21,77 @@ class DpsSavingView extends GetView<DpsSavingController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Tenure',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: AppSize.textMedium,
+            Expanded(child: Container(
+              child: DropdownSearch<String>(
+                popupProps: PopupProps.menu(
+                  showSearchBox: false,
+                  showSelectedItems: true,
+                ),
+                items: controller.tenureList(),
+                dropdownDecoratorProps: DropDownDecoratorProps(
+                  dropdownSearchDecoration: InputDecoration(
+                    labelText: 'Tenure',
+                    filled: true,
+                    fillColor: AppColor.colorWhite,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColor.colorGray.withOpacity(0.2),width: AppSize.s2
+                      ),
+
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColor.primaryAppColor.withOpacity(0.6),width: AppSize.s2
+                      ),
+
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColor.colorGray.withOpacity(0.3),width: AppSize.s2
+                      ),
+                    )
+
+                  )
+                ),
               ),
-            ),
-            SizedBox(height: AppSize.s6),
-            Obx(() {
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: AppSize.s12, vertical: AppSize.s6),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColor.colorGray, // Border color
-                    width: 1.0, // Border width
-                  ),
-                  borderRadius: BorderRadius.circular(8.0), // Border radius
-                ),
-                child: DropdownButtonHideUnderline( // Hide the default underline
-                  child: DropdownButton<String>(
-                    value: controller.selectedTenure.value,
-                    items: controller.tenureOptions.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (newValue) {
-                      controller.selectedTenure.value = newValue!;
-                    },
-                    isExpanded: true,
-                    hint: Text("Select Type of identification"),
-                  ),
-                ),
-              );
-            }),
+
+            )),
+            // Text(
+            //   'Tenure',
+            //   style: TextStyle(
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: AppSize.textMedium,
+            //   ),
+            // ),
+            // SizedBox(height: AppSize.s6),
+            // Obx(() {
+            //   return Container(
+            //     padding: EdgeInsets.symmetric(horizontal: AppSize.s12, vertical: AppSize.s6),
+            //     decoration: BoxDecoration(
+            //       border: Border.all(
+            //         color: AppColor.colorGray, // Border color
+            //         width: 1.0, // Border width
+            //       ),
+            //       borderRadius: BorderRadius.circular(8.0), // Border radius
+            //     ),
+            //     child: DropdownButtonHideUnderline( // Hide the default underline
+            //       child: DropdownButton<String>(
+            //         value: controller.selectedTenure.value,
+            //         items: controller.tenureOptions.map((String value) {
+            //           return DropdownMenuItem<String>(
+            //             value: value,
+            //             child: Text(value),
+            //           );
+            //         }).toList(),
+            //         onChanged: (newValue) {
+            //           controller.selectedTenure.value = newValue!;
+            //         },
+            //         isExpanded: true,
+            //         hint: Text("Select Type of identification"),
+            //       ),
+            //     ),
+            //   );
+            // }),
             SizedBox(
               height: AppSize.s16,
             ),

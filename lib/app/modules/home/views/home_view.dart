@@ -119,7 +119,9 @@ class HomeView extends GetView<HomeController> {
             bottom: AppSize.s12,
             left: AppSize.s12,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppPages.LOGIN);
+              },
               child: Text(
                 'Skip',
                 style: TextStyle(

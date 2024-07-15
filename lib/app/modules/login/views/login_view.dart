@@ -42,7 +42,7 @@ class LoginView extends GetView<LoginController> {
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 50.0),
+                      padding:  EdgeInsets.only(top: AppSize.s50),
                       child: Text(
                         'LankaBangla ',
                         style: TextStyle(
@@ -56,7 +56,7 @@ class LoginView extends GetView<LoginController> {
                 ),
                 Container(
                   height: Get.size.height / 2,
-                  color: Colors.white,
+                  color: AppColor.colorWhite,
                 ),
               ],
             ),
@@ -65,8 +65,8 @@ class LoginView extends GetView<LoginController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 160, left: 40, right: 40),
-                    padding: EdgeInsets.only(top: 10.0),
+                    margin: EdgeInsets.only(top: AppSize.s150, left: AppSize.s40, right: AppSize.s40),
+                    padding: EdgeInsets.only(top: AppSize.s10),
                     height: Get.size.height / 2,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -85,29 +85,26 @@ class LoginView extends GetView<LoginController> {
                           Text(
                             'Login',
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: AppSize.textXMedium,
                               fontWeight: FontWeight.normal,
                               color: AppColor.primaryAppColor,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: AppSize.s20),
                           Container(
                             width: Get.size.width / 1.35,
                             child: TextField(
                               controller: controller.mobileController,
                               decoration: InputDecoration(
-                                labelText: 'Mobile No.',
+                                labelText: 'Username',
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(Icons.person, color: AppColor.primaryAppColor),
                               ),
-                              keyboardType: TextInputType.number,
-                              inputFormatters: <TextInputFormatter>[
-                                FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(11),
-                              ],
+
+
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: AppSize.s10),
                           Container(
                             width: Get.width / 1.35,
                             child: Obx(
@@ -117,7 +114,7 @@ class LoginView extends GetView<LoginController> {
                                 decoration: InputDecoration(
                                   labelText: 'Password',
                                   border: OutlineInputBorder(
-                                    gapPadding: 10.0,
+                                    gapPadding: AppSize.s10,
                                   ),
                                   prefixIcon: Icon(Icons.lock, color: AppColor.primaryAppColor),
                                   suffixIcon: IconButton(
@@ -136,7 +133,7 @@ class LoginView extends GetView<LoginController> {
                             if (controller.passwordError.value) {
                               return Container(
                                 alignment: Alignment.centerLeft,
-                                padding: EdgeInsets.only(left: 15.0, top: 5.0),
+                                padding: EdgeInsets.only(left: AppSize.s16, top: AppSize.s5),
                                 child: Text(
                                   'Only letters and numbers are allowed',
                                   style: TextStyle(
@@ -148,7 +145,20 @@ class LoginView extends GetView<LoginController> {
                               return SizedBox.shrink();
                             }
                           }),
-                          SizedBox(height: 3),
+                          SizedBox(height: AppSize.s3),
+                          // Container(
+                          //   width: Get.size.width / 1.35,
+                          //   child: TextField(
+                          //     controller: controller.securityController,
+                          //     decoration: InputDecoration(
+                          //       labelText: 'Security Key',
+                          //       border: OutlineInputBorder(),
+                          //       prefixIcon: Icon(Icons.person, color: AppColor.primaryAppColor),
+                          //     ),
+                          //
+                          //
+                          //   ),
+                          // ),
                           Obx(
                                 () => Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -166,14 +176,14 @@ class LoginView extends GetView<LoginController> {
                           ),
                           Container(
                             width: Get.width / 1.35,
-                            height: 60,
+                            height: AppSize.s60,
                             child: ElevatedButton(
                               onPressed: () {
 
-                                Get.toNamed(AppPages.INITIAL);
+                                controller.onLoginClicked();
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigo[900],
+                                backgroundColor: AppColor.primaryAppColor,
                                 elevation: 3,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
@@ -183,22 +193,22 @@ class LoginView extends GetView<LoginController> {
                                 'Login',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: AppSize.textXMedium,
                                 ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: AppSize.s20,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: AppSize.s32  ),
                   Container(
                     margin: EdgeInsets.only(right: 175),
-                    padding: EdgeInsets.only(left: 5.0, top: 5.0),
+                    padding: EdgeInsets.only(left: AppSize.s5, top: AppSize.s5),
                     height: 105,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -218,7 +228,7 @@ class LoginView extends GetView<LoginController> {
                           Text(
                             'Hi dear, can not remember password?',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: AppSize.textMedium,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
@@ -227,13 +237,13 @@ class LoginView extends GetView<LoginController> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed('/forgot-password');
+
                                 },
                                 child: Text(
                                   'Forgot Password?',
                                   style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
+                                    color: AppColor.primaryAppColor,
+                                    fontSize: AppSize.textMedium,
                                   ),
                                 ),
                               ),
@@ -248,10 +258,10 @@ class LoginView extends GetView<LoginController> {
                     alignment: Alignment.bottomRight,
                     child: Container(
                       margin: EdgeInsets.only(left: 175),
-                      padding: EdgeInsets.only(right: 5.0),
+                      padding: EdgeInsets.only(right: AppSize.s5),
                       height: 105,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColor.colorWhite,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -271,7 +281,7 @@ class LoginView extends GetView<LoginController> {
                                 Text(
                                   'Do not have an account?',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: AppSize.textMedium,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -282,13 +292,13 @@ class LoginView extends GetView<LoginController> {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Get.toNamed('/register');
+
                                   },
                                   child: Text(
                                     'Register Now',
                                     style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: 18,
+                                      color: AppColor.primaryAppColor,
+                                      fontSize: AppSize.textMedium,
                                     ),
                                   ),
                                 ),

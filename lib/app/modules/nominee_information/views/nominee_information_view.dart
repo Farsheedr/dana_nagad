@@ -36,6 +36,7 @@ class NomineeView extends GetView<NomineeController> {
                     ),
                     child: DropdownButtonHideUnderline( // Hide the default underline
                       child: DropdownButton<String>(
+
                         value: controller.selectedType.value,
                         items: controller.typeOptions.map((String value) {
                           return DropdownMenuItem<String>(

@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => child!,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Doc Life",
-          initialRoute: //AppPages.INITIAL,
-            AppPages.LOGIN,
+        title: "Dana Nagad",
+          initialRoute: AppPages.INITIAL,
+            // AppPages.LOGIN,
         getPages: AppPages.routes,
         theme: ThemeData(
           useMaterial3: false,

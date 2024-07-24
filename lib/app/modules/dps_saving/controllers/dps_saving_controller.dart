@@ -17,6 +17,8 @@ RxString selectedFrequency = 'Monthly'.obs;
 RxString selectedAmount = '5000'.obs;
 RxBool isTermAccepted = false.obs;
 final TextEditingController purposeController = TextEditingController();
+final TextEditingController taxReturnController = TextEditingController();
+
 final List<String> tenureOptions = [
   '6 months',
   '12 months',

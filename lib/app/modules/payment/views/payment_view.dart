@@ -25,19 +25,19 @@ class PaymentView extends GetView<PaymentController> {
                   hintText: 'Enter Nagad Account Number',
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Colors.grey, // border color
-                      width: 1.0, // border width
+                      color: AppColor.colorGray, // border color
+                      width: AppSize.s2, // border width
                     ),
-                    borderRadius: BorderRadius.circular(8.0), // border radius
+                    borderRadius: BorderRadius.circular(AppSize.s8), // border radius
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Colors.blue, // focused border color
-                      width: 1.0, // focused border width
+                      color: AppColor.primaryAppColor, // focused border color
+                      width: AppSize.s2, // focused border width
                     ),
-                    borderRadius: BorderRadius.circular(8.0), // focused border radius
+                    borderRadius: BorderRadius.circular(AppSize.s8), // focused border radius
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  contentPadding: EdgeInsets.symmetric(vertical: AppSize.s12, horizontal: AppSize.s16),
                 ),
               ),
             SizedBox(height: AppSize.s20,),

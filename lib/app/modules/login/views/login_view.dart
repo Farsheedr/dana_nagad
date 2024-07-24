@@ -35,8 +35,8 @@ class LoginView extends GetView<LoginController> {
                   decoration: BoxDecoration(
                     color:AppColor.primaryAppColor,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(275.0, 75.0),
-                      bottomRight: Radius.elliptical(275.0, 75.0),
+                      bottomLeft: Radius.elliptical(AppSize.s200, AppSize.s75),
+                      bottomRight: Radius.elliptical(AppSize.s200, AppSize.s75),
                     ),
                   ),
                   child: Align(
@@ -46,8 +46,8 @@ class LoginView extends GetView<LoginController> {
                       child: Text(
                         'LankaBangla ',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 50.0,
+                          color: AppColor.colorWhite,
+                          fontSize: AppSize.textXXXLarge,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -69,8 +69,8 @@ class LoginView extends GetView<LoginController> {
                     padding: EdgeInsets.only(top: AppSize.s10),
                     height: Get.size.height / 2,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.colorWhite,
+                      borderRadius: BorderRadius.circular(AppSize.s10),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey,
@@ -86,7 +86,7 @@ class LoginView extends GetView<LoginController> {
                             'Login',
                             style: TextStyle(
                               fontSize: AppSize.textXMedium,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.bold,
                               color: AppColor.primaryAppColor,
                             ),
                           ),
@@ -257,12 +257,12 @@ class LoginView extends GetView<LoginController> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Container(
-                      margin: EdgeInsets.only(left: 175),
+                      margin: EdgeInsets.only(left: AppSize.s150),
                       padding: EdgeInsets.only(right: AppSize.s5),
                       height: 105,
                       decoration: BoxDecoration(
                         color: AppColor.colorWhite,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(AppSize.s10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey,

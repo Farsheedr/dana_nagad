@@ -25,10 +25,10 @@ class MainView extends GetView<HomeController> {
 
                   border: Border.all(
                     color: AppColor.colorWhite, // Border color
-                    width: 2.0,
+                    width: AppSize.s2,
                     // Border width
                   ),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(AppSize.s20),
 
                 ),
                 child: Column(

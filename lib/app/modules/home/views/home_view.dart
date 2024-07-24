@@ -148,7 +148,7 @@ class HomeView extends GetView<HomeController> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColor.primaryAppColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(AppSize.s10),
                   ),
                 ),
               ),

@@ -12,9 +12,9 @@ import '../models/all_dps_products.dart';
 class DpsSavingController extends GetxController {
   final localPreferences = Get.put(LocalPreferences());
   RxBool isLoading = false.obs;
-RxString selectedTenure = '6 months'.obs;
+var selectedTenure = ''.obs;
 RxString selectedFrequency = 'Monthly'.obs;
-RxString selectedAmount = '5000'.obs;
+var selectedAmount = ''.obs;
 RxBool isTermAccepted = false.obs;
 final TextEditingController purposeController = TextEditingController();
 final TextEditingController taxReturnController = TextEditingController();
@@ -40,8 +40,18 @@ final List<String> amountOptions = [
   '20000',
 
 ].obs;
+ var productData = GetAllDpsProducts.empty().obs;
  var productList = <Body>[].obs;
  var tenureList = <String>[].obs;
+
+
+ List<String> generateAmountList() {
+    List<String> amounts = [];
+    for (int i = 500; i <= 5000; i += 500) {
+      amounts.add(i.toString());
+    }
+    return amounts;
+  }
 
   final count = 0.obs;
   @override
@@ -68,12 +78,16 @@ final List<String> amountOptions = [
     try {
       await RemoteServices.getAllDpsProducts().then((value) {
 
+        productData.value = value;
+
         productList.value = value.body;
 
-
-
-
         tenureList.value = productList.map((product) => product.tenure).toList();
+
+
+
+
+
 
         isLoading.value = false;
 
@@ -86,6 +100,13 @@ final List<String> amountOptions = [
       isLoading.value = false;
     }
   }
+  void setSelectedAmount (String amount){
+    selectedAmount.value=amount;
+  }
+  void setSelectedTenure (String tenure){
+    selectedTenure.value=tenure;
+  }
+
 }
 
 

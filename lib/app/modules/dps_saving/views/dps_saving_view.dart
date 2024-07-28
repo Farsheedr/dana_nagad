@@ -1,4 +1,7 @@
+ // import 'dart:html';
+
 import 'package:dana_nagad/app/modules/dps_saving/controllers/dps_saving_controller.dart';
+import 'package:dana_nagad/app/modules/dps_saving/models/all_dps_products.dart';
 import 'package:dana_nagad/app/routes/app_pages.dart';
 import 'package:dana_nagad/app/styles/app_styles.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -7,6 +10,14 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class DpsSavingView extends GetView<DpsSavingController> {
+  List<String> generateAmountList() {
+    List<String> amounts = [];
+    for (int i = 500; i <= 5000; i += 500) {
+      amounts.add(i.toString());
+    }
+    return amounts;
+  }
+
   const DpsSavingView({Key? key}) : super(key: key);
 
   @override
@@ -36,40 +47,59 @@ class DpsSavingView extends GetView<DpsSavingController> {
                       ),
                     ),
                     SizedBox(height: AppSize.s8),
-                    DropdownSearch<String>(// Package that creates dropdown
+                    DropdownSearch<Body>(
                       popupProps: PopupProps.menu(
                         showSearchBox: false,
                         showSelectedItems: true,
+                        itemBuilder: (context, item, isSelected) {
+                          return ListTile(
+                            title: Text(item.tenure),
+                          );
+                        },
                       ),
-                      items: controller.tenureList,
+                      items: controller.productList, // Use the list of Body objects
                       dropdownDecoratorProps: DropDownDecoratorProps(
-                        dropdownSearchDecoration: InputDecoration(
-                          labelText: 'Tenure',
-                          filled: true,
-                          fillColor: AppColor.colorWhite,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColor.colorGray.withOpacity(0.2),
-                              width: AppSize.s2,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColor.primaryAppColor.withOpacity(0.6),
-                              width: AppSize.s2,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColor.colorGray.withOpacity(0.3),
-                              width: AppSize.s2,
-                            ),
-                          ),
-                        ),
+                          dropdownSearchDecoration: InputDecoration(
+                              labelText: '',
+                              filled: true,
+                              fillColor: AppColor.colorWhite,
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: AppColor.colorGray.withOpacity(0.2),
+                                    width: AppSize.s2,
+                                  )
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: AppColor.primaryAppColor.withOpacity(0.6),
+                                    width: AppSize.s2,
+                                  )
+                              ),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: AppColor.colorWhite.withOpacity(0.3),
+                                      width: AppSize.s2
+                                  )
+                              )
+                          )
                       ),
+                      selectedItem: controller.productList.isNotEmpty ? controller.productList.first : null,
+                      dropdownBuilder: (context, selectedItem) {
+                        if (selectedItem == null) {
+                          return const Text('Tenure');
+                        }
+                        return Text(selectedItem.tenure); // Display the selected product's name
+                      },
+                      onChanged: (Body? newValue) {
 
+                        if (newValue != null) {
+                          controller.setSelectedTenure(newValue.tenure);
+                        }
+                      },
 
-                    ),
+                      compareFn: (Body a, Body b) => a.tenure == b.tenure,
+                    )
+
                   ],
                 ),
               ),
@@ -126,38 +156,57 @@ class DpsSavingView extends GetView<DpsSavingController> {
                   ),
                   SizedBox(height: AppSize.s6),
 
-                  DropdownSearch<String>(
+                  DropdownSearch<Body>(
                     popupProps: PopupProps.menu(
                       showSearchBox: false,
                       showSelectedItems: true,
+                      itemBuilder: (context, item, isSelected) {
+                        return ListTile(
+                          title: Text(item.type),
+                        );
+                      },
                     ),
-                    items: ['Monthly', 'Half-Yearly', 'Yearly'],
+                    items: controller.productList, // Use the list of Body objects
                     dropdownDecoratorProps: DropDownDecoratorProps(
-                      dropdownSearchDecoration: InputDecoration(
-                        labelText: 'Deposit Frequency',
-                        filled: true,
-                        fillColor: AppColor.colorWhite,
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColor.colorGray.withOpacity(0.2),
-                            width: AppSize.s2,
-                          )
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColor.primaryAppColor.withOpacity(0.6),
-                            width: AppSize.s2,
-                          )
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColor.colorWhite.withOpacity(0.3),
-                            width: AppSize.s2
-                          )
+                        dropdownSearchDecoration: InputDecoration(
+                            labelText: '',
+                            filled: true,
+                            fillColor: AppColor.colorWhite,
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColor.colorGray.withOpacity(0.2),
+                                  width: AppSize.s2,
+                                )
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColor.primaryAppColor.withOpacity(0.6),
+                                  width: AppSize.s2,
+                                )
+                            ),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: AppColor.colorWhite.withOpacity(0.3),
+                                    width: AppSize.s2
+                                )
+                            )
                         )
-                      )
                     ),
+                    selectedItem: controller.productList.isNotEmpty ? controller.productList.first : null,
+                    dropdownBuilder: (context, selectedItem) {
+                      if (selectedItem == null) {
+                        return const Text('Deposit Frequency');
+                      }
+                      return Text(selectedItem.type); // Display the selected product's name
+                    },
+                    onChanged: (Body? newValue) {
 
+                      if (newValue != null) {
+                        print('Selected product: ${newValue.type}');
+                      }
+                    },
+
+                    compareFn: (Body a, Body b) => a.type == b.type,
                   ),
                   // Obx(() {
                   //   return Container(
@@ -208,35 +257,42 @@ class DpsSavingView extends GetView<DpsSavingController> {
                       showSearchBox: false,
                       showSelectedItems: true,
                     ),
-                    items: ['500','1000','2000','5000'],
+                    items: generateAmountList(), // Use the generated list of amounts
                     dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
-                        labelText: 'Amount',
+                        labelText: '',
                         filled: true,
                         fillColor: AppColor.colorWhite,
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColor.colorGray.withOpacity(0.2),
-                            width: AppSize.s2
-
-                          )
+                            width: AppSize.s2,
+                          ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColor.primaryAppColor.withOpacity(0.6),
-                            width: AppSize.s2
-                          )
+                            width: AppSize.s2,
+                          ),
                         ),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColor.colorWhite.withOpacity(0.3),
-                            width: AppSize.s2
-                          )
-                        )
-
-                      )
+                            width: AppSize.s2,
+                          ),
+                        ),
+                      ),
                     ),
+                    dropdownBuilder: (context, selectedItem) {
+                      return Text(selectedItem ?? 'Select Amount');
+                    },
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        controller.setSelectedAmount(newValue);
+                      }
+                    },
                   ),
+
                   // Obx(() {
                   //   return Container(
                   //     padding: EdgeInsets.symmetric(horizontal: AppSize.s12, vertical: AppSize.s6),
@@ -292,7 +348,7 @@ class DpsSavingView extends GetView<DpsSavingController> {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: AppColor.colorWhite.withOpacity(0.3), // focused border color
-                      width: 1.0, // focused border width
+                      width: AppSize.s2, // focused border width
                     ),
                     borderRadius: BorderRadius.circular(AppSize.s8), // focused border radius
                   ),

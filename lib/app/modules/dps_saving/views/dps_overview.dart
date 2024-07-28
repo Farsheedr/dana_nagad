@@ -9,6 +9,7 @@ class DpsOverviewView extends GetView<DpsSavingController> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
         title: Text('Overview'),
@@ -56,7 +57,7 @@ class DpsOverviewView extends GetView<DpsSavingController> {
             fontSize: AppSize.textXMedium,
             fontWeight: FontWeight.normal)),
               SizedBox(height: AppSize.s16,),
-              Text('5000/month',
+              Text('${controller.selectedAmount.value}/month',
                 style: TextStyle(color: AppColor.colorBlack,
                     fontSize: AppSize.textXLarge,
                     fontWeight: FontWeight.bold) ,),
@@ -66,7 +67,7 @@ class DpsOverviewView extends GetView<DpsSavingController> {
                       fontSize: AppSize.textXMedium,
                       fontWeight: FontWeight.normal)),
               SizedBox(height: AppSize.s16,),
-              Text('24 Months',
+              Text('${controller.selectedTenure.value}',
                 style: TextStyle(color: AppColor.colorBlack,
                     fontSize: AppSize.textXLarge,
                     fontWeight: FontWeight.bold) ,),

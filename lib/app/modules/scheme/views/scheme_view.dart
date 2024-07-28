@@ -1,3 +1,4 @@
+import 'package:dana_nagad/app/modules/dps_saving/controllers/dps_saving_controller.dart';
 import 'package:dana_nagad/app/routes/app_pages.dart';
 import 'package:dana_nagad/app/styles/app_styles.dart';
 import 'package:dana_nagad/app/utils/app_assets.dart';
@@ -7,10 +8,12 @@ import 'package:get/get.dart';
 import '../controllers/scheme_controller.dart';
 
 class SchemeView extends GetView<SchemeController> {
+
   const SchemeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final DpsSavingController dpsSavingController =  Get.find<DpsSavingController>();
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose Your Scheme'),
@@ -35,7 +38,7 @@ class SchemeView extends GetView<SchemeController> {
                 SizedBox(
                   height: AppSize.s10,
                 ),
-                Text('৳ 500 per month for 24 months',
+                Text('৳ ${dpsSavingController.selectedAmount.value} per month for ${dpsSavingController.selectedTenure.value}',
                 style: TextStyle(
                   color:AppColor.colorGray,
                 ),),
@@ -113,7 +116,7 @@ class SchemeView extends GetView<SchemeController> {
                     
                       Icon(Icons.shield,),
                       SizedBox(width: AppSize.s10,),
-                      Text('Installment:1000/month',
+                      Text('Installment:${dpsSavingController.selectedAmount.value}/month',
                         style: TextStyle(fontSize: AppSize.textXMedium),),
                     
                     ],
@@ -130,7 +133,7 @@ class SchemeView extends GetView<SchemeController> {
                     
                       Icon(Icons.airplanemode_on,),
                       SizedBox(width: AppSize.s10,),
-                      Text('Tenure: 6 months.',
+                      Text('Tenure: ${dpsSavingController.selectedTenure.value}.',
                         style: TextStyle(fontSize: AppSize.textXMedium),),
                     
                     ],
@@ -139,7 +142,7 @@ class SchemeView extends GetView<SchemeController> {
                 SizedBox(height: AppSize.s10,),
                 Container(width: Get.width/1.5,
                   child: ElevatedButton(onPressed: (){
-                    Get.toNamed(AppPages.NOMINEE);
+                    Get.toNamed(AppPages.NOMINEEPERSONAL);
                   }, child: Text(
                     'Apply Now'
                   ),

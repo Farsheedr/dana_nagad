@@ -43,13 +43,13 @@ class LoginProvider extends GetConnect{
 
       return loginResponseFromJson(response.body);
     } else if (response.statusCode == 502) {
-      negativeSnackbar(Icons.warning_outlined, "Warning!", "Unable to Access Server. Please, Try Again Later.");
+      negativeSnackbar(  message: 'Unable to Access Server. Please, Try Again Later.');
       throw const HttpException('error');
     } else if (response.statusCode == 400) {
-      negativeSnackbar(Icons.warning_outlined, "Warning!", "Username or Password is Invalid");
+      negativeSnackbar( message:  "Username or Password is Invalid");
       throw const HttpException('Username or Password is invalid');
     } else {
-      negativeSnackbar(Icons.warning_outlined, "Warning!", "Something Wrong");
+      negativeSnackbar(message: "Something Wrong");
       throw const HttpException('Something went wrong!');
     }
   }

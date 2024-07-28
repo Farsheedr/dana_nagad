@@ -4,6 +4,7 @@ import 'package:dana_nagad/app/styles/app_styles.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 
 class NomineeView extends GetView<NomineeController> {
@@ -31,7 +32,7 @@ class NomineeView extends GetView<NomineeController> {
                     showSearchBox: false,
                     showSelectedItems: true,
                   ),
-                  items: ['NID','Passport','Birth Certificate'],
+                  items: ['NID','Passport','Birth Certificate','Driving License'],
                   dropdownDecoratorProps: DropDownDecoratorProps(
                     dropdownSearchDecoration: InputDecoration(
                       labelText: 'Type',
@@ -56,6 +57,10 @@ class NomineeView extends GetView<NomineeController> {
 
                     )
                   ),
+                  onChanged: (String? value){
+                    if(value != null)
+                      controller.idType.value= value;
+                  },
 
                 ),
                 // Obx(() {
@@ -95,7 +100,7 @@ class NomineeView extends GetView<NomineeController> {
                 fontSize: AppSize.textMedium),),
                 SizedBox(height: AppSize.s6,),
                 TextField(
-                  controller: controller.identityController,
+                  controller: controller.nomineeIdController,
                   decoration: InputDecoration(
                     hintText: 'Provide Your Identification Number',
                     border: OutlineInputBorder(
@@ -122,6 +127,7 @@ class NomineeView extends GetView<NomineeController> {
                   ),
                 ),
                 SizedBox(height: AppSize.s16,),
+
                 Text('Relationship',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: AppSize.s6),
@@ -130,7 +136,7 @@ class NomineeView extends GetView<NomineeController> {
                     showSearchBox: false,
                     showSelectedItems: true,
                   ),
-                  items: ['Husband/Wife', 'Child'],
+                  items:[],
                   dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
                           labelText: 'Relationship',

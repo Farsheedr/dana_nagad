@@ -14,6 +14,8 @@ abstract class Routes {
   static const DETAILS = _Paths.DETAILS;
   static const CONFIRM = _Paths.CONFIRM;
   static const LOGIN = _Paths.LOGIN;
+  static const NOMINEEPERSONAL = _Paths.NOMINEEPERSONAL;
+
 
 
 
@@ -39,6 +41,8 @@ abstract class _Paths {
   static const DETAILS = '/payment-details';
   static const CONFIRM = '/confirm-payment';
   static const LOGIN = '/login';
+  static const NOMINEEPERSONAL = '/nominee-personal';
+
 
 
 

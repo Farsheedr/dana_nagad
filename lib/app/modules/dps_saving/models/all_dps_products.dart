@@ -19,6 +19,9 @@ class GetAllDpsProducts {
     required this.statusCode,
   });
 
+  factory GetAllDpsProducts.empty() =>
+  GetAllDpsProducts(body: [], message: "", statusCode: 0);
+
   factory GetAllDpsProducts.fromJson(Map<String, dynamic> json) => GetAllDpsProducts(
     body: List<Body>.from(json["body"].map((x) => Body.fromJson(x))),
     message: json["message"],
@@ -36,10 +39,10 @@ class Body {
   String productCode;
   String productName;
   String tenure;
-  int totalDuration;
+  num totalDuration;
   String type;
-  int minAmount;
-  int maxAmount;
+  num minAmount;
+  num maxAmount;
 
   Body({
     required this.productCode,

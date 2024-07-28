@@ -5,6 +5,7 @@ import 'package:dana_nagad/app/modules/home/views/main_view.dart';
 import 'package:dana_nagad/app/modules/login/views/login_view.dart';
 import 'package:dana_nagad/app/modules/nominee_information/bindings/nominee_information_binding.dart';
 import 'package:dana_nagad/app/modules/nominee_information/views/nominee_information_view.dart';
+import 'package:dana_nagad/app/modules/nominee_information/views/nominee_personal_view.dart';
 import 'package:dana_nagad/app/modules/payment/bindings/payment_binding.dart';
 import 'package:dana_nagad/app/modules/payment/views/confirmation_view.dart';
 import 'package:dana_nagad/app/modules/payment/views/nagad_view.dart';
@@ -35,6 +36,8 @@ class AppPages {
   static const DETAILS = Routes.DETAILS;
   static const CONFIRM = Routes.CONFIRM;
   static const LOGIN = Routes.LOGIN;
+  static const NOMINEEPERSONAL = Routes.NOMINEEPERSONAL;
+
 
 
 
@@ -132,6 +135,15 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () =>  LoginView(),
       binding: LoginBinding(),
+      transition:Transition.rightToLeftWithFade,
+
+
+
+    ),
+    GetPage(
+      name: _Paths.NOMINEEPERSONAL,
+      page: () =>  NomineePersonalView(),
+      binding: NomineeBinding(),
       transition:Transition.rightToLeftWithFade,
 
 

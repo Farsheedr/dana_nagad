@@ -13,11 +13,11 @@ class GetRelationList {
   String nameBn;
   int sortOrder;
   int id;
-  int? isDelete;
+  int isDelete;
   String createdAt;
   String updatedAt;
-  String? createdBy;
-  String? updatedBy;
+  String createdBy;
+  String updatedBy;
 
   GetRelationList({
     required this.name,
@@ -31,8 +31,8 @@ class GetRelationList {
     required this.updatedBy,
   });
 
-  factory GetRelationList.empty() =>
-  GetRelationList(name: "", nameBn: "", sortOrder: 0, id: 0, isDelete: 0, createdAt: "", updatedAt: "", createdBy: "", updatedBy: "");
+  // factory GetRelationList.empty() =>
+  // GetRelationList(name: "", nameBn: "", sortOrder: 0, id: 0, isDelete: 0, createdAt: "", updatedAt: "", createdBy: "", updatedBy: "");
 
   factory GetRelationList.fromJson(Map<String, dynamic> json) => GetRelationList(
     name: json["name"]??"",

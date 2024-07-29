@@ -1,3 +1,4 @@
+import 'package:dana_nagad/app/modules/nominee_information/controllers/nominee_information_controller.dart';
 import 'package:dana_nagad/app/routes/app_pages.dart';
 import 'package:dana_nagad/app/styles/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class PaymentDetailsView extends GetView<PaymentController> {
 
   @override
   Widget build(BuildContext context) {
+    final NomineeController nomineeController =  Get.find<NomineeController>();
     return Scaffold(
       appBar:AppBar(title: Text('DPS Payment Details'),
         backgroundColor: AppColor.primaryAppColor,),
@@ -167,7 +169,7 @@ class PaymentDetailsView extends GetView<PaymentController> {
             ),
             SizedBox(height: AppSize.s10,),
             Container(
-              child: ElevatedButton(onPressed: (){Get.toNamed(AppPages.CONFIRM);}, child: Text('Confirm',
+              child: ElevatedButton(onPressed: (){nomineeController.nomineeRegistration();}, child: Text('Confirm',
 
 
               ),

@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Dana Nagad",
-           initialRoute: //AppPages.INITIAL,
-              AppPages.LOGIN,
+            initialRoute: //AppPages.INITIAL,
+               AppPages.LOGIN,
         getPages: AppPages.routes,
         theme: ThemeData(
           useMaterial3: false,

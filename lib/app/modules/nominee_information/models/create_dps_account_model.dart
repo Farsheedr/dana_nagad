@@ -14,7 +14,7 @@ class CreateDpsAccount {
   String accountTitle;
   String fatherName;
   String motherName;
-  String dateOfBirth;
+  DateTime dateOfBirth;
   String gender;
   String mobileNo;
   String acHolderPhoto;
@@ -53,7 +53,7 @@ class CreateDpsAccount {
     accountTitle: json["accountTitle"]??"",
     fatherName: json["fatherName"]??"",
     motherName: json["motherName"]??"",
-    dateOfBirth: json["dateOfBirth"]??"",
+    dateOfBirth: DateTime.parse(json["dateOfBirth"]),
     gender: json["gender"]??"",
     mobileNo: json["mobileNo"]??"",
     acHolderPhoto: json["acHolderPhoto"]??"",
@@ -73,7 +73,7 @@ class CreateDpsAccount {
     "accountTitle": accountTitle,
     "fatherName": fatherName,
     "motherName": motherName,
-    "dateOfBirth": dateOfBirth,
+    "dateOfBirth": dateOfBirth.toIso8601String(),
     "gender": gender,
     "mobileNo": mobileNo,
     "acHolderPhoto": acHolderPhoto,
@@ -95,7 +95,7 @@ class DpsNominee {
   String nomineeSpouse;
   String nomineePermanentAddress;
   String nomineePresentAddress;
-  String nomineeDob;
+  DateTime nomineeDob;
   String nomineeETin;
   String nomineePassport;
   String nomineeBirthIdentity;
@@ -132,7 +132,7 @@ class DpsNominee {
     nomineeSpouse: json["nomineeSpouse"]??"",
     nomineePermanentAddress: json["nomineePermanentAddress"]??"",
     nomineePresentAddress: json["nomineePresentAddress"]??"",
-    nomineeDob: json["nomineeDOB"]??"",
+    nomineeDob: DateTime.parse(json["nomineeDOB"]),
     nomineeETin: json["nomineeETin"]??"",
     nomineePassport: json["nomineePassport"]??"",
     nomineeBirthIdentity: json["nomineeBirthIdentity"]??"",
@@ -151,7 +151,7 @@ class DpsNominee {
     "nomineeSpouse": nomineeSpouse,
     "nomineePermanentAddress": nomineePermanentAddress,
     "nomineePresentAddress": nomineePresentAddress,
-    "nomineeDOB": nomineeDob,
+    "nomineeDOB": nomineeDob.toIso8601String(),
     "nomineeETin": nomineeETin,
     "nomineePassport": nomineePassport,
     "nomineeBirthIdentity": nomineeBirthIdentity,
@@ -166,7 +166,7 @@ class DpsNominee {
 
 class LegalGuardianInfo {
   String guardianName;
-  String guardianDateOfBirth;
+  DateTime guardianDateOfBirth;
   String guardianFather;
   String guardianMother;
   String guardianAddress;
@@ -184,18 +184,18 @@ class LegalGuardianInfo {
   });
 
   factory LegalGuardianInfo.fromJson(Map<String, dynamic> json) => LegalGuardianInfo(
-    guardianName: json["guardianName"]??"",
-    guardianDateOfBirth: json["guardianDateOfBirth"]??"",
-    guardianFather: json["guardianFather"]??"",
-    guardianMother: json["guardianMother"]??"",
-    guardianAddress: json["guardianAddress"]??"",
-    guardianPhone: json["guardianPhone"]??"",
-    relation: json["relation"]??"",
+    guardianName: json["guardianName"],
+    guardianDateOfBirth: DateTime.parse(json["guardianDateOfBirth"]),
+    guardianFather: json["guardianFather"],
+    guardianMother: json["guardianMother"],
+    guardianAddress: json["guardianAddress"],
+    guardianPhone: json["guardianPhone"],
+    relation: json["relation"],
   );
 
   Map<String, dynamic> toJson() => {
     "guardianName": guardianName,
-    "guardianDateOfBirth": guardianDateOfBirth,
+    "guardianDateOfBirth": guardianDateOfBirth.toIso8601String(),
     "guardianFather": guardianFather,
     "guardianMother": guardianMother,
     "guardianAddress": guardianAddress,

@@ -4,6 +4,6 @@ class AppApis{
 
 
   static String getAllDpsProductsApi = '${baseUrl}api/GetAllDPSProduct';
-  static String getRelationListApi = '${baseUrl}/api/GetRelationList';
-  static String createDPSAccountApi = '${baseUrl}/api/CreateDpsAccount';
+  static String getRelationListApi = '${baseUrl}api/GetRelationList';
+  static String createDPSAccountApi = '${baseUrl}api/CreateDPSAccount';
 }

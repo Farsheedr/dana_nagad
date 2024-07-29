@@ -34,10 +34,12 @@ class RemoteServices {
       throw HttpException('Something went wrong');
     }
   }
+
   static Future<List<GetRelationList>> getRelationList() async{
     final url = AppApis.getRelationListApi;
+
     print('Token: ${localPreferences.token.val}');
-    var response = await  client.get(
+    var response = await client.get(
       Uri.parse(url),
       headers: {'Content-Type': 'application/json', 'Authorization':'Bearer ${localPreferences.token.val}'},
 
@@ -52,12 +54,14 @@ class RemoteServices {
   }
 
   static Future<String> nomineeRegistration(reqBody) async {
-    final url = AppApis.baseUrl + AppApis.createDPSAccountApi;
+    final url = AppApis.createDPSAccountApi;
     var response = await client.post(
       Uri.parse(url),
       headers: {'Content-Type': 'application/json', 'Authorization':'Bearer ${localPreferences.token.val}'},
       body: jsonEncode(reqBody),
     );
+    print('Response Status Code : ${response.statusCode}');
+    print('Response Body: ${response.body}');
     if (response.statusCode == 200) {
       return jsonDecode(response.body)["message"];
     } else {

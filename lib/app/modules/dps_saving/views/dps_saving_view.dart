@@ -10,20 +10,14 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class DpsSavingView extends GetView<DpsSavingController> {
-  List<String> generateAmountList() {
-    List<String> amounts = [];
-    for (int i = 500; i <= 5000; i += 500) {
-      amounts.add(i.toString());
-    }
-    return amounts;
-  }
+
 
   const DpsSavingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text('DPS Savings'),
         backgroundColor: AppColor.primaryAppColor,
@@ -51,16 +45,19 @@ class DpsSavingView extends GetView<DpsSavingController> {
                       popupProps: PopupProps.menu(
                         showSearchBox: false,
                         showSelectedItems: true,
-                        itemBuilder: (context, item, isSelected) {
-                          return ListTile(
-                            title: Text(item.tenure),
-                          );
-                        },
+                        // itemBuilder: (context, item, isSelected) {
+                        //   return ListTile(
+                        //     title: Text(item.tenure),
+                        //   );
+                        // },
                       ),
                       items: controller.productList, // Use the list of Body objects
+                      itemAsString: (Body b)=> b.tenure,
                       dropdownDecoratorProps: DropDownDecoratorProps(
                           dropdownSearchDecoration: InputDecoration(
                               labelText: '',
+                              hintText: 'Tenure',
+                              hintStyle: TextStyle(color: AppColor.colorBlack),
                               filled: true,
                               fillColor: AppColor.colorWhite,
                               focusedBorder: OutlineInputBorder(
@@ -90,6 +87,7 @@ class DpsSavingView extends GetView<DpsSavingController> {
                         }
                         return Text(selectedItem.tenure); // Display the selected product's name
                       },
+
                       onChanged: (Body? newValue) {
 
                         if (newValue != null) {
@@ -160,13 +158,14 @@ class DpsSavingView extends GetView<DpsSavingController> {
                     popupProps: PopupProps.menu(
                       showSearchBox: false,
                       showSelectedItems: true,
-                      itemBuilder: (context, item, isSelected) {
-                        return ListTile(
-                          title: Text(item.type),
-                        );
-                      },
+                      // itemBuilder: (context, item, isSelected) {
+                      //   return ListTile(
+                      //     title: Text(item.type),
+                      //   );
+                      // },
                     ),
-                    items: controller.productList, // Use the list of Body objects
+                    items: controller.productList,
+                    itemAsString: (Body b)=> b.type,// Use the list of Body objects
                     dropdownDecoratorProps: DropDownDecoratorProps(
                         dropdownSearchDecoration: InputDecoration(
                             labelText: '',
@@ -257,7 +256,7 @@ class DpsSavingView extends GetView<DpsSavingController> {
                       showSearchBox: false,
                       showSelectedItems: true,
                     ),
-                    items: generateAmountList(), // Use the generated list of amounts
+                    items: controller.generateAmountList(), // Use the generated list of amounts
                     dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
                         labelText: '',
